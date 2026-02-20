@@ -12,7 +12,9 @@ A website capable of hosting, sharing, and engaging with photos and photographer
 -CSS
 -Responsive Design
 
-## Deployment
+## Project Pitch
+
+https://drive.google.com/file/d/1mtVVD8JTV_iuLQIcaKxjOXfZtp_xSRpK/view?usp=sharing
 
 ## This webpage is deployed to Github pages
 
