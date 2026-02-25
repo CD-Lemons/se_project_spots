@@ -27,6 +27,7 @@ const initialCards = [
 
 const editProfileButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-profile-modal");
+const editProfileFormElement = editProfileModal.querySelector(".modal__form");
 const editProfileCloseButton = editProfileModal.querySelector(
   ".modal__close-button",
 );
@@ -35,12 +36,23 @@ const newPostButton = document.querySelector(".profile__add-button");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
 
+const currentProfileName = document.querySelector(".profile__name");
+const currentProfileDesc = document.querySelector(".profile__description");
+const profileNameInput = document.querySelector("#profile-name-input");
+const profileDescInupt = document.querySelector("#profile-description-input");
+
+const addPostFormElement = newPostModal.querySelector(".modal__form");
+const postCaptInput = document.querySelector("#profile-caption-input");
+const postLinkInput = document.querySelector("#profile-link-input");
+
 editProfileButton.addEventListener("click", () => {
   handleClickOpen(editProfileModal);
 });
 
 editProfileCloseButton.addEventListener("click", () => {
   handleClickClose(editProfileModal);
+  profileDescInupt.value = currentProfileDesc.textContent;
+  profileNameInput.value = currentProfileName.textContent;
 });
 
 newPostButton.addEventListener("click", () => {
@@ -57,6 +69,29 @@ function handleClickOpen(modal) {
 function handleClickClose(modal) {
   modal.classList.remove("modal_is-opened");
 }
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+
+  currentProfileName.textContent = profileNameInput.value;
+  currentProfileDesc.textContent = profileDescInupt.value;
+
+  editProfileModal.classList.remove("modal_is-opened");
+}
+
+editProfileFormElement.addEventListener("submit", handleProfileFormSubmit);
+
+function handleAddCardSubmit(evt) {
+  evt.preventDefault();
+
+  console.log(postLinkInput.value);
+  console.log(postCaptInput.value);
+
+  newPostModal.classList.remove("modal_is-opened");
+}
+
+addPostFormElement.addEventListener("submit", handleAddCardSubmit);
+
 initialCards.forEach(function (card) {
   console.log(card.name);
   console.log(card.link);
